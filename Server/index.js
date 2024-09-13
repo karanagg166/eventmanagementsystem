@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, '../client/disst')));
 
 // Serve index.html for all non-API routes (optional, if serving React app)
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/disst/index.html'));
+    res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
 const port = process.env.PORT || 7000;
 
