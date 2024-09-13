@@ -4,7 +4,7 @@ import AuthRoutes from './Routes/AuthRoutes.js';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
-import path, { dirname } from "path";
+import path from "path";
 const __dirname = path.resolve();
     dotenv.config()
     const app = express();
