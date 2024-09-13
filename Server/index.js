@@ -23,11 +23,11 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(express.urlencoded({extended: false}));
 app.use('/api/Auth',AuthRoutes);
-app.use(express.static(path.join(__dirname, '../Client/dist')));
+app.use(express.static(path.join(__dirname, '../client/dist')));
 
 // Serve index.html for all non-API routes (optional, if serving React app)
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../Client/dist/index.html'));
+    res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
 const port = process.env.PORT || 7000;
 
