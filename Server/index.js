@@ -4,7 +4,8 @@ import AuthRoutes from './Routes/AuthRoutes.js';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
-
+import path from "path";
+const __dirname = path.resolve();
     dotenv.config()
     const app = express();
     app.use(cors({
@@ -22,6 +23,12 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(express.urlencoded({extended: false}));
 app.use('/api/Auth',AuthRoutes);
+app.use(express.static(path.join(__dirname, '../Client/dist')));
+
+// Serve index.html for all non-API routes (optional, if serving React app)
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../Client/dist', 'index.html'));
+});
 const port = process.env.PORT || 7000;
 
 app.listen(port, () => {
