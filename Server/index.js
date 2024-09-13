@@ -8,17 +8,17 @@ import path, { dirname } from "path";
 const __dirname = path.resolve();
     dotenv.config()
     const app = express();
-    app.use(cors({
-        origin: ['http://localhost:5173'],
-        credentials: true
-    }))
+   
 // Database Connection
  mongoose.connect(process.env.MONGO_URL)
  .then(() => console.log('Database Connected'))
  .catch((err) => console.log('Database not Connected', err))
 
 // Middleware 
-
+app.use((req, res, next) => {
+    res.set("Document-Policy", "js-profiling");
+    next();
+  });
 app.use(express.json())
 app.use(cookieParser())
 app.use(express.urlencoded({extended: false}));
